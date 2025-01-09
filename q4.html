@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: red;
+            color: white;
+        }
+        .country {
+            background-color: yellow;
+        }
+        .year {
+            background-color: lightblue;
+        }
+        .population {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin: 60px; ">Population of countries</h1>
+    <table>
+        <tr>
+            <th>Country</th>
+            <th>Population (in Crores)</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td class="country" rowspan="3">INDIA</td>
+            <td class="year">1998</td>
+            <td class="population">85</td>
+        </tr>
+        <tr>
+            <td class="year">1999</td>
+            <td class="population">90</td>
+        </tr>
+        <tr>
+            <td class="year">2000</td>
+            <td class="population">100</td>
+        </tr>
+        <tr>
+            <td class="country" rowspan="2">USA</td>
+            <td class="year">1998</td>
+            <td class="population">30</td>
+        </tr>
+        <tr>
+            <td class="year">1999</td>
+            <td class="population">35</td>
+        </tr>
+        <tr>
+            <td class="country" rowspan="3">UK</td>
+            <td class="year">1998</td>
+            <td class="population">25</td>
+        </tr>
+        <tr>
+            <td class="year">1999</td>
+            <td class="population">30</td>
+        </tr>
+        <tr>
+            <td class="year">2000</td>
+            <td class="population">35</td>
+        </tr>
+    </table>
+    <script src="q5.js"></script>
+</body>
+</html>
