@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Table and Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            overflow: hidden; 
+        }
+
+        #container {
+            position: absolute;
+            right: 0; 
+            transition: right 0.5s ease; 
+        }
+
+        table {
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        img {
+            height: 125px;
+            margin-top: 10px;
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        // jQuery code written directly here
+        window.onload = function() {
+            var moved = false;
+            document.getElementById("moveButton").onclick = function() {
+                if (!moved) {
+                    document.getElementById("container").style.right = "80%"; 
+                } else {
+                    document.getElementById("container").style.right = "0"; 
+                }
+                moved = !moved; 
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="moveButton">Move Left</button>
+    <div id="container">
+        <table>
+            <tr style="background-color: aqua;">
+                <th>Name</th>
+                <th>RollNo</th>
+                <th>Branch</th>
+            </tr>
+            <tr style="background-color: purple;">
+                <td>Mahika</td>
+                <td>14</td>
+                <td>CSE</td>
+            </tr>
+            <tr style="background-color: aquawhite;">
+                <td>Ashwin</td>
+                <td>11</td>
+                <td>CCE</td>
+            </tr>
+        </table>
+        <img src="image.jpg" alt="DNA structure illustration">
+    </div>
+</body>
+</html>

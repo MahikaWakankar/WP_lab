@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; 
+        }
+        .calculator {
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            background-color: #fff; 
+            border: 2px solid #ccc; 
+        }
+        .display {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: right;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .button {
+            font-size: 20px;
+            padding: 20px;
+            border: none;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 50px;
+            height: 50px;
+            transition: background-color 0.2s;
+        }
+        
+        .button:active {
+            background-color: #ccc;
+        }
+        .operator {
+            background-color: #E91E63;
+            color: white;
+        }
+        .equal {
+            background-color: #4CAF50;
+            color: white;
+            width: 110px;
+        }
+        .clear {
+            background-color: #E91E63;
+            color: white;
+            width: 110px;
+        }
+    </style>
+    <script type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" language="javascript">
+        window.onload = function() {
+            let currentInput = '';
+            let previousInput = '';
+            let operator = '';
+            let result = '';
+
+            $(".button").click(function () {
+                let buttonValue = $(this).text();
+
+                if (buttonValue >= '0' && buttonValue <= '9') { 
+                    currentInput += buttonValue;
+                } else if (buttonValue === '.') { 
+                    if (!currentInput.includes('.')) {
+                        currentInput += buttonValue;
+                    }
+                } else if (buttonValue === 'C') { 
+                    currentInput = '';
+                    previousInput = '';
+                    operator = '';
+                    result = '';
+                } else if (buttonValue === '=') { 
+                    if (previousInput && operator && currentInput) {
+                        switch (operator) {
+                            case '+':
+                                result = parseFloat(previousInput) + parseFloat(currentInput);
+                                break;
+                            case '-':
+                                result = parseFloat(previousInput) - parseFloat(currentInput);
+                                break;
+                            case '*':
+                                result = parseFloat(previousInput) * parseFloat(currentInput);
+                                break;
+                            case '/':
+                                if (currentInput === '0') {
+                                    result = 'Error';
+                                } else {
+                                    result = parseFloat(previousInput) / parseFloat(currentInput);
+                                }
+                                break;
+                        }
+
+                        currentInput = ''; 
+                        previousInput = result.toString(); 
+                        operator = ''; 
+                    }
+                } else { 
+                    if (currentInput !== '') {
+                        if (previousInput === '') {
+                            previousInput = currentInput;
+                        } else {
+                            switch (operator) {
+                                case '+':
+                                    previousInput = (parseFloat(previousInput) + parseFloat(currentInput)).toString();
+                                    break;
+                                case '-':
+                                    previousInput = (parseFloat(previousInput) - parseFloat(currentInput)).toString();
+                                    break;
+                                case '*':
+                                    previousInput = (parseFloat(previousInput) * parseFloat(currentInput)).toString();
+                                    break;
+                                case '/':
+                                    if (currentInput !== '0') {
+                                        previousInput = (parseFloat(previousInput) / parseFloat(currentInput)).toString();
+                                    } else {
+                                        previousInput = 'Error';
+                                    }
+                                    break;
+                            }
+                        }
+                        operator = buttonValue;
+                        currentInput = ''; 
+                    }
+                }
+
+                let displayText = previousInput + ' ' + operator + ' ' + currentInput;
+
+                if (result !== '') {
+                    displayText = previousInput + ' = ' + result; 
+                }
+
+                $('#result').val(displayText.trim() || '0');
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" id="result" readonly>
+        <div class="buttons">
+            <button class="button clear" id="clear">C</button>
+            <button class="button operator" id="divide">/</button>
+            <button class="button operator" id="multiply">*</button>
+            <button class="button operator" id="subtract">-</button>
+            
+            <button class="button" id="7">7</button>
+            <button class="button" id="8">8</button>
+            <button class="button" id="9">9</button>
+            <button class="button operator" id="add">+</button>
+            
+            <button class="button" id="4">4</button>
+            <button class="button" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button equal" id="equal">=</button>
+            
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            
+            <button class="button" id="0">0</button>
+            <button class="button" id="decimal">.</button>
+        </div>
+    </div>
+</body>
+</html>

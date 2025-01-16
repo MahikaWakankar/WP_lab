@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeting Card Customization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 20px;
+    }
+    .container {
+      background-color: #ffffcc;
+      padding: 20px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    select, input[type="number"], textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+    .checkbox {
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .cake-container {
+      background-color: yellow;
+      border: 3px solid black;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 0;
+    }
+    .cake-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <script type="text/javascript" language="javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector("#update").addEventListener("click", function() {
+        var backgroundColor = document.querySelector("#background-color").value;
+        var fontFamily = document.querySelector("#font").value;
+        var fontSize = document.querySelector("#font-size").value;
+        var borderStyle = document.querySelector("input[name='border-style']:checked").value;
+        var defaultPicture = document.querySelector("#default-picture").checked;
+        var greetingText = document.querySelector("#greeting-text").value;
+
+        var preview = document.createElement("div");
+        preview.style.backgroundColor = backgroundColor;
+        preview.style.fontFamily = fontFamily;
+        preview.style.fontSize = fontSize + "px";
+        preview.style.border = "2px " + borderStyle + " black";
+        preview.style.padding = "10px";
+        preview.style.marginTop = "20px";
+
+        var text = document.createElement("p");
+        text.textContent = greetingText;
+
+        if (defaultPicture) {
+          var img = document.createElement("img");
+          img.src = "https://via.placeholder.com/150";
+          img.alt = "Default Picture";
+          img.style.display = "block";
+          img.style.marginBottom = "10px";
+          preview.appendChild(img);
+        }
+
+        preview.appendChild(text);
+        document.body.appendChild(preview);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <label for="background-color">Choose a background color:</label>
+    <select id="background-color">
+      <option value="yellow">Yellow</option>
+      <option value="lightblue">Light Blue</option>
+      <option value="lightgreen">Light Green</option>
+    </select>
+
+    <label for="font">Choose a font:</label>
+    <select id="font">
+      <option value="Verdana">Verdana</option>
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier New</option>
+    </select>
+
+    <label for="font-size">Specify a numeric font size:</label>
+    <input type="number" id="font-size" value="25">
+
+    <label>Choose a border style:</label>
+    <input type="radio" name="border-style" value="none" checked> None
+    <input type="radio" name="border-style" value="double"> Double
+    <input type="radio" name="border-style" value="solid"> Solid
+
+    <div class="checkbox">
+      <input type="checkbox" id="default-picture"> Add the Default Picture
+    </div>
+
+    <label for="greeting-text">Enter the greeting text below:</label>
+    <textarea id="greeting-text" rows="4">Happy Birthday, and many more</textarea>
+
+    <button id="update">Update</button>
+
+    <div class="cake-container">
+      <img src="cake.jpg" alt="Cake Image">
+    </div>
+  </div>
+</body>
+</html>
